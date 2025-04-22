@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block title %} | About {% endblock %}
+
+{% block content %}
+
+{% load static %}
+
+<!-- Sub banner start -->
+<div class="sub-banner overview-bgi">
+    <div class="container breadcrumb-area">
+        <div class="breadcrumb-areas">
+            <h1>About Us</h1>
+            <ul class="breadcrumbs">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li class="active">About Us</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Sub Banner end -->
+
+<!-- Service center strat -->
+<div class="about-car content-area-5">
+    <div class="container">
+        <div class="row">
+        {% for images in images %}
+            <div class="col-xl-5 col-lg-6">
+                <div class="about-car-photo">
+                    
+                    
+                    <div id="carDetailsSlider" class="carousel car-details-sliders slide">
+                        <!-- main slider carousel items -->
+                        <div class="carousel-inner">
+                            {% if images.photo_1 %}
+                            <div class="active item carousel-item" data-slide-number="0">
+                                <img src="{{ images.photo_1.url }}" class="img-fluid" alt="imagae">
+                            </div>
+                            {% endif %}
+                        </div>
+                        <!-- main slider carousel nav controls -->
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <div class="col-xl-7 col-lg-6 align-self-center">
+                <div class="best-used-car">
+                    <h3>Welcome to <span>Elite Planner</span></h3>
+                    <p> "A Symphony of Style, Detail, and Distinction." </p>
+                    <p>At Elite Planner, we curate events that exude elegance, refinement, and timeless charm. Specializing in high-end experiences, our brand is synonymous with luxury — orchestrating celebrations that are as unique as our clients.
+                       From intimate soirées to grand galas, we bring a couture approach to event planning. Each detail is meticulously designed, each moment thoughtfully composed, ensuring your event is not just seen — but felt and remembered.
+                       With a legacy of excellence and a portfolio of bespoke experiences, our team delivers more than events — we craft masterpieces of celebration. Backed by discretion, precision, and aesthetic mastery, Elite Planner remains the trusted name for those who seek nothing but the extraordinary.</p>
+                    <p class="mb-0"> ✨ Because ordinary isn’t in our vocabulary.
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Service center end -->
+
+
+<!-- Our team start -->
+<div class="our-team content-area bg-grea-3">
+    <div class="container">
+        <!-- Main title -->
+        <div class="main-title">
+            <h1>Executive <span>Team</span></h1>
+            <p>Meet the leadership behind Elite Planner—a team of innovators dedicated to transforming how the world plans and experiences events. From luxury weddings to corporate galas, we blend creativity, technology, and sustainability to deliver unforgettable moments with ease and elegance.</p>
+        </div>
+        <!-- Slick slider area start -->
+        <div class="slick-slider-area clearfix">
+            <div class="row slick-carousel" data-slick='{"slidesToShow": 4, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 2}}, {"breakpoint": 768,"settings":{"slidesToShow": 1}}]}'>
+                {% for team in teams %}
+                <div class="slick-slide-item">
+                    <div class="team-1">
+                        <div class="photo">
+                            <a href="#">
+                                <img src="{{ team.photo.url }}" alt="team-1" class="img-fluid" style="height: 260px;">
+                            </a>
+                            <div class="social-list clearfix">
+                                <a href="{{team.facebook_link}}" target="_blank" class="facebook-bg"><i class="fa fa-facebook"></i></a>
+                                <a href="{{team.twitter_link}}" target="_blank" class="twitter-bg"><i class="fa fa-twitter"></i></a>
+                                <a href="{{team.linkedin_link}}" target="_blank" class="google-bg"><i class="fa fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                        <div class="details">
+                            <h4><a href="#">{{team.first_name}} {{team.last_name}}</a></h4>
+                            <h5>{{team.designation}}</h5>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Our team end -->
+
+{% endblock %}
